@@ -1,0 +1,7 @@
+th, th a {
+    color: #555;
+    text-decoration: none;
+}
+a.active {
+    border-bottom: dashed
+}
