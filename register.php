@@ -6,14 +6,14 @@ require_once __DIR__ . '/boot.php';
 // print_r($_POST['desc']);
 
 if ($_POST['mark'] == 'add') {
-    $stmt = pdo()->prepare("INSERT INTO `tasks` (`name`, `email`, `task`, `description`) VALUES (:username, :email, :task, :description)");
+    $stmt = pdo()->prepare("INSERT INTO `tasks` (`name`, `email`, `task`, `description`) VALUES (:username, :email, :task, :descr)");
     $stmt->execute([
         'username' => $_POST['name'],
         'email' => $_POST['email'],
         'task' => $_POST['task'],
-        'description' => htmlspecialchars($_POST['desc']),
+        'descr' => htmlspecialchars($_POST['desc']),
     ]);
-    echo "add";
+    // echo "add";
 } else {
     $stmt = pdo()->prepare("UPDATE tasks SET status= :status, task= :task WHERE id= :id");
     $stmt->execute([
@@ -22,7 +22,6 @@ if ($_POST['mark'] == 'add') {
         'task' => $_POST['task'],
     ]);
 }
-
 
 header('Location: /');
 ?>
